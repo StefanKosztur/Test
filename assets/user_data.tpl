@@ -1,7 +1,3 @@
-#/usr/bin/env bash
+#/usr/bin/
 
-set -e
-set -x
-
-export HOST= ${"hostname"}
-export NETWORK=${"network"}
+sudo apt update
