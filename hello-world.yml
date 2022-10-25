@@ -1,6 +1,15 @@
+resources:
+- name: repo
+  type: git
+  source: 
+    uri: https://github.com/StefanKosztur/Test.git
+
+
 jobs:
 - name: hello-world-job
   plan:
+  - get: repo
+    trigger: true
   - task: hello-world-task
     config:
       platform: linux
