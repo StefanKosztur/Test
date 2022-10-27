@@ -1,0 +1,13 @@
+resources:
+- name: resource-repo
+  type: git
+  source:
+    uri: https://github.com/StefanKosztur/Test.git
+    branch: main
+jobs:
+- name: job-hello-world
+  public: true
+  plan:
+  - get: resource-repo
+  - task: hello-world
+      file: resource-repo/hello-world.yml
