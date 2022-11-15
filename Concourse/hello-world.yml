@@ -1,16 +1,18 @@
-resources:
-- name: repo
-  type: git
-  source:
-    uri: https://github.com/StefanKosztur/Test.git
-    
 jobs:
 - name: hello-world-job
   plan:
-  - get: repo
-    trigger: true
   - task: hello-world-task
-    file: repo/Concourse/task-hello-world/task_hello_world.yml 
-run:
-  path: echo
-  args: [hello world]
+    config:
+      # Tells Concourse which type of worker this task should run on
+      platform: linux
+      # This is one way of telling Concourse which container image to use for a
+      # task. We'll explain this more when talking about resources
+      image_resource:
+        type: registry-image
+        source:
+          repository: busybox # images are pulled from docker hub by default
+      # The command Concourse will run inside the container
+      # echo "Hello world!"
+      run:
+        path: echo
+        args: ["Hello world!"]

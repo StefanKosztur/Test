@@ -1,7 +1,7 @@
 locals {
     common_tags = {
-        "name"= var.name
-        "scope"= var.scope
+        "Name"= var.name
+        "Scope"= var.scope
     }
 
 }
